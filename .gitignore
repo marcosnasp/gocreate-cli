@@ -1,0 +1,18 @@
+# Binários
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Arquivos de build
+*.o
+*.obj
+
+# Diretórios de saída
+/bin/
+/dist/
+
+# Arquivos temporários
+*.log
+*.tmp
