@@ -23,7 +23,7 @@ build:
 		else \
 			ext=""; \
 		fi; \
-		GOOS=$$platform GOARCH=$(ARCH) go build -o $(BUILD_DIR)/$(BINARY_NAME)-$$platform-$(ARCH)$$ext ./cmd/$(BINARY_NAME); \
+		GOOS=$$platform GOARCH=$(ARCH) go build -o $(BUILD_DIR)/$(BINARY_NAME)-$$platform-$(ARCH)$$ext ./cmd/gocreate-cli/main.go; \
 		echo "Gerado: $(BUILD_DIR)/$(BINARY_NAME)-$$platform-$(ARCH)$$ext"; \
 	done
 
@@ -38,10 +38,10 @@ clean:
 package: build
 	@for platform in $(PLATFORMS); do \
 		if [ "$$platform" = "windows" ]; then \
-			cd $(BUILD_DIR) && zip $(BINARY_NAME)-$(VERSION)-$$platform-$(ARCH).zip $(BINARY_NAME)-$$platform-$(ARCH).exe && cd ..; \
+			cd $(BUILD_DIR) && tar -a -c -f $(BINARY_NAME)-$(VERSION)-$$platform-$(ARCH).zip $(BINARY_NAME)-$$platform-$(ARCH).exe && cd ..; \
 			echo "Gerado: $(BUILD_DIR)/$(BINARY_NAME)-$(VERSION)-$$platform-$(ARCH).zip"; \
 		else \
-			tar -czvf $(BUILD_DIR)/$(BINARY_NAME)-$(VERSION)-$$platform-$(ARCH).tar.gz -C $(BUILD_DIR) $(BINARY_NAME)-$$platform-$(ARCH); \
+			tar -czvf $(BUILD_DIR)/$(BINARY_NAME)-$(VERSION)-$$platform-$(ARCH).tar.gz -C "$(BUILD_DIR)" "$(BINARY_NAME)-$$platform-$(ARCH)"; \
 			echo "Gerado: $(BUILD_DIR)/$(BINARY_NAME)-$(VERSION)-$$platform-$(ARCH).tar.gz"; \
 		fi; \
 	done
