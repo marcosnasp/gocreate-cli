@@ -8,9 +8,9 @@ Um CLI em Go para criar projetos Go com uma estrutura de diretórios padrão.
 go install github.com/marcosnasp/gocreate-cli@latest
 ```
 
-# Estrutura do Projeto após Execução do `gocreate library-api`
+### Estrutura do Projeto após Execução do `gocreate library-api`
 
-# library-api
+## library-api
 
 Um projeto Go com estrutura organizada
 
